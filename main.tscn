@@ -50,5 +50,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Ball-Bounce Spelling Game"
 
+[node name="CrabGame" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Crab Game"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MexicanWaveGame" to="." method="_on_mexican_wave_game_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BallBounceGame" to="." method="_on_ball_bounce_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CrabGame" to="." method="_on_crab_game_pressed"]
