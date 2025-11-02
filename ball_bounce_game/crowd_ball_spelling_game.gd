@@ -56,3 +56,7 @@ func spawn_new_ball():
 
 func _on_release_ball_button_pressed() -> void:
 	spawn_new_ball()
+
+
+func _on_back_button_pressed() -> void:
+	SceneSwitcher.queue_switch_scene(SceneSwitcher.main_scene)

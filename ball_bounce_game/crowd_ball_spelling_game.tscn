@@ -187,7 +187,16 @@ color = Color(0.53492486, 0.20413458, 4.3317675e-07, 1)
 [node name="StaticBody2D" type="StaticBody2D" parent="RightBorder"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBorder/StaticBody2D"]
-position = Vector2(128, 320)
+position = Vector2(128, 324)
 shape = SubResource("RectangleShape2D_5o8hb")
 
+[node name="BackButton" type="Button" parent="."]
+offset_left = 1032.0
+offset_top = 24.0
+offset_right = 1123.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+
 [connection signal="pressed" from="ReleaseBallButton" to="." method="_on_release_ball_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

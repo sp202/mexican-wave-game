@@ -1,5 +1,6 @@
 extends Node
 
+@export var main_scene:PackedScene
 @export var mexican_wave_typing_game_scene:PackedScene
 @export var ball_bounce_spelling_game_scene:PackedScene
 

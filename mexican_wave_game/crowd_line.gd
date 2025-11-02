@@ -93,7 +93,7 @@ func process_victory():
 
 func process_incorrect_letter(letter:String):
 	print("Incorrect Letter: ", letter)
-	
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !accepting_inputs || !allowed_to_wave:

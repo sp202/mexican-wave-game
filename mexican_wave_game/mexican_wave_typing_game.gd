@@ -91,3 +91,7 @@ func _on_ready_button_pressed() -> void:
 func _on_retry_button_pressed() -> void:
 	if state == State.VICTORY || state == State.LOSS:
 		reset()
+
+
+func _on_back_button_pressed() -> void:
+	SceneSwitcher.queue_switch_scene(SceneSwitcher.main_scene)
