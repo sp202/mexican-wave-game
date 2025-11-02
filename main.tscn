@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bklubkulutqyb"]
 
 [ext_resource type="Script" uid="uid://ddf65fgyd437n" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bubjsiara3vsa" path="res://mexican_wave_typing_game.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bubjsiara3vsa" path="res://mexican_wave_game/mexican_wave_typing_game.tscn" id="2_0xm2m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
 font_size = 48
@@ -40,9 +40,15 @@ label_settings = SubResource("LabelSettings_h2yge")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MexicanWaveGame" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Mexican Wave Typing Game"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="BallBounceGame" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Ball-Bounce Spelling Game"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MexicanWaveGame" to="." method="_on_mexican_wave_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BallBounceGame" to="." method="_on_ball_bounce_game_pressed"]
