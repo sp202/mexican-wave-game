@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://qkxlgp53rnh"]
+
+[ext_resource type="PackedScene" uid="uid://b6gm6iqpmra38" path="res://endless_runner/jumping_crab.tscn" id="1_74bba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1ade"]
+size = Vector2(1152, 128)
+
+[node name="EndlessRunnerGame" type="Node2D"]
+
+[node name="Sky" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.5232878, 0.8922619, 0.99495465, 1)
+
+[node name="JumpingCrab" parent="." instance=ExtResource("1_74bba")]
+position = Vector2(80, 456)
+
+[node name="Sand" type="ColorRect" parent="."]
+offset_top = 520.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.89411765, 0.83137256, 0.58431375, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sand/StaticBody2D"]
+position = Vector2(576, 64)
+shape = SubResource("RectangleShape2D_m1ade")

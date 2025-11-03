@@ -4,6 +4,7 @@ extends Node
 @export var mexican_wave_typing_game_scene:PackedScene
 @export var ball_bounce_spelling_game_scene:PackedScene
 @export var crab_game:PackedScene
+@export var endless_runner_game:PackedScene
 
 var current_scene:Node = null
 
