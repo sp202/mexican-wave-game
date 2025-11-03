@@ -25,3 +25,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_retry_button_pressed() -> void:
 	reset()
+
+
+func _on_back_button_pressed() -> void:
+	SceneSwitcher.queue_switch_scene(SceneSwitcher.main_scene)

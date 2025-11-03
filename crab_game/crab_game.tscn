@@ -230,6 +230,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Retry"
 
+[node name="BackButton" type="Button" parent="."]
+offset_left = 1032.0
+offset_top = 24.0
+offset_right = 1123.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+
 [connection signal="animation_finished" from="Water/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Water/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="LossScreen/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
