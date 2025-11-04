@@ -1,5 +1,15 @@
 extends Node2D
 
+
+const ROCK_SPEED:float = -300
+
+
+func _process(delta: float) -> void:
+	
+	$Rocks.position.x += ROCK_SPEED*delta
+	
+	
+
 func _ready() -> void:
 	reset()
 

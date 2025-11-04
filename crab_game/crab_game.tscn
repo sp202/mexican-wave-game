@@ -1,7 +1,59 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq66k3la0er8b"]
+[gd_scene load_steps=10 format=3 uid="uid://bq66k3la0er8b"]
 
 [ext_resource type="Script" uid="uid://c0yyrn5g4xhml" path="res://crab_game/crab_game.gd" id="1_her5s"]
 [ext_resource type="PackedScene" uid="uid://crpukwr6khuic" path="res://crab_game/crab.tscn" id="2_her5s"]
+[ext_resource type="PackedScene" uid="uid://qmyknk600nqy" path="res://endless_runner/rock.tscn" id="3_jwypb"]
+
+[sub_resource type="Animation" id="Animation_jwypb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1152, 148)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 496)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 260)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1152, 520)]
+}
 
 [sub_resource type="Animation" id="Animation_her5s"]
 resource_name = "wave_animation"
@@ -53,57 +105,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1152, 152), Vector2(1152, 520)]
-}
-
-[sub_resource type="Animation" id="Animation_jwypb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1152, 148)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 496)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(576, 260)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Area2D/CollisionShape2D:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1152, 520)]
 }
 
 [sub_resource type="Animation" id="Animation_2dtjg"]
@@ -237,6 +238,26 @@ offset_right = 1123.0
 offset_bottom = 77.0
 theme_override_font_sizes/font_size = 32
 text = "BACK"
+
+[node name="Rocks" type="Node2D" parent="."]
+
+[node name="Rock" parent="Rocks" instance=ExtResource("3_jwypb")]
+position = Vector2(792, 352)
+
+[node name="Rock2" parent="Rocks" instance=ExtResource("3_jwypb")]
+position = Vector2(1144, 216)
+
+[node name="Rock3" parent="Rocks" instance=ExtResource("3_jwypb")]
+position = Vector2(1832, 264)
+
+[node name="Rock4" parent="Rocks" instance=ExtResource("3_jwypb")]
+position = Vector2(1512, 464)
+
+[node name="Rock5" parent="Rocks" instance=ExtResource("3_jwypb")]
+position = Vector2(2336, 104)
+
+[node name="Rock6" parent="Rocks" instance=ExtResource("3_jwypb")]
+position = Vector2(2168, 416)
 
 [connection signal="animation_finished" from="Water/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Water/Area2D" to="." method="_on_area_2d_body_entered"]
