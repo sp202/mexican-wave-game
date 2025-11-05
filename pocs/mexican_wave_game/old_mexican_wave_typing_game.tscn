@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bubjsiara3vsa"]
 
-[ext_resource type="Script" uid="uid://3edx4sgh8mdf" path="res://pocs/mexican_wave_game/mexican_wave_typing_game.gd" id="1_d7iiw"]
-[ext_resource type="PackedScene" uid="uid://def43p88jt0ty" path="res://pocs/mexican_wave_game/crowd_line.tscn" id="1_yqivm"]
+[ext_resource type="Script" uid="uid://3edx4sgh8mdf" path="res://pocs/mexican_wave_game/old_mexican_wave_typing_game.gd" id="1_cicvs"]
+[ext_resource type="PackedScene" uid="uid://def43p88jt0ty" path="res://pocs/mexican_wave_game/old_crowd_line.tscn" id="2_summe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqivm"]
 font_size = 64
@@ -22,15 +22,15 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_r0hlr"]
 font_size = 64
 
-[node name="MexicanWaveTypingGame" type="Node2D"]
-script = ExtResource("1_d7iiw")
+[node name="OldMexicanWaveTypingGame" type="Node2D"]
+script = ExtResource("1_cicvs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.4378049, 0.7202219, 0.58813035, 1)
 
-[node name="PlayerCrowdLine" parent="." node_paths=PackedStringArray("first_crowd_member_marker") instance=ExtResource("1_yqivm")]
+[node name="PlayerCrowdLine" parent="." node_paths=PackedStringArray("first_crowd_member_marker") instance=ExtResource("2_summe")]
 accepting_inputs = true
 phrase = "The quick brown fox!"
 spacing_between_crowd_members = 56
@@ -39,7 +39,7 @@ first_crowd_member_marker = NodePath("FirstCrowdMemberPosition")
 [node name="FirstCrowdMemberPosition" type="Marker2D" parent="PlayerCrowdLine"]
 position = Vector2(32, 176)
 
-[node name="EnemyCrowdLine" parent="." node_paths=PackedStringArray("first_crowd_member_marker") instance=ExtResource("1_yqivm")]
+[node name="EnemyCrowdLine" parent="." node_paths=PackedStringArray("first_crowd_member_marker") instance=ExtResource("2_summe")]
 phrase = "The quick brown fox!"
 spacing_between_crowd_members = 56
 first_crowd_member_marker = NodePath("FirstCrowdMemberPosition")

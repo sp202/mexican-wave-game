@@ -1,4 +1,4 @@
-class_name CrowdMember extends Node2D
+class_name OldCrowdMember extends Node2D
 
 @export var letter:String
 @onready var label: Label = $Label

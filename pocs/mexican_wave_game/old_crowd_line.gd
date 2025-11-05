@@ -1,4 +1,4 @@
-class_name CrowdLine extends Node2D
+class_name OldCrowdLine extends Node2D
 
 signal go
 signal done_manual_wave
@@ -14,7 +14,7 @@ var allowed_to_wave:bool
 @export var first_crowd_member_marker:Marker2D
 
 
-var crowd_members:Array[CrowdMember]
+var crowd_members:Array[OldCrowdMember]
 var current_crowd_member_index:int
 
 
@@ -34,7 +34,7 @@ func reset():
 	# Setup the crowd members
 	var buffer:int = 0
 	for letter in phrase:
-		var new_crowd_member = crowd_member_scene.instantiate() as CrowdMember
+		var new_crowd_member = crowd_member_scene.instantiate() as OldCrowdMember
 		add_child(new_crowd_member)
 		new_crowd_member.position = first_crowd_member_marker.position+Vector2(buffer, 0)
 		new_crowd_member.letter = letter

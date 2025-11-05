@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var letter_dict:Dictionary[String, CrowdMember] = {}
+@export var letter_dict:Dictionary[String, OldCrowdMember] = {}
 @export var ball_scene:PackedScene
 
 
