@@ -14,42 +14,42 @@ script = ExtResource("1_5t2nf")
 [node name="CrowdRows" type="Node2D" parent="."]
 
 [node name="CrowdRow9" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("3_cl8m1")]
-scroll_scale = Vector2(0.65, 1.016)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 56)
 camera = NodePath("../../Camera2D")
 first_member_offset = 256.0
 num_crowd_members = 22
 
 [node name="CrowdRow7" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("3_cl8m1")]
-scroll_scale = Vector2(0.65, 1.016)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 88)
 camera = NodePath("../../Camera2D")
 first_member_offset = 284.0
 num_crowd_members = 22
 
 [node name="CrowdRow8" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("3_cl8m1")]
-scroll_scale = Vector2(0.65, 1.016)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 120)
 camera = NodePath("../../Camera2D")
 first_member_offset = 256.0
 num_crowd_members = 22
 
 [node name="CrowdRow6" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("3_cl8m1")]
-scroll_scale = Vector2(0.65, 1.016)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 152)
 camera = NodePath("../../Camera2D")
 first_member_offset = 284.0
 num_crowd_members = 22
 
 [node name="CrowdRow5" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("3_cl8m1")]
-scroll_scale = Vector2(0.65, 1.016)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 184)
 camera = NodePath("../../Camera2D")
 first_member_offset = 256.0
 num_crowd_members = 22
 
 [node name="TypingRow" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("4_8vx36")]
-scroll_scale = Vector2(0.65, 1.016)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 216)
 phrase = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 camera = NodePath("../../Camera2D")
@@ -57,28 +57,28 @@ first_member_offset = 284.0
 num_crowd_members = 22
 
 [node name="CrowdRow3" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("3_cl8m1")]
-scroll_scale = Vector2(0.65, 1.016)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 248)
 camera = NodePath("../../Camera2D")
 first_member_offset = 256.0
 num_crowd_members = 22
 
 [node name="CrowdRow2" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("3_cl8m1")]
-scroll_scale = Vector2(0.65, 1.016)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 280)
 camera = NodePath("../../Camera2D")
 first_member_offset = 284.0
 num_crowd_members = 22
 
 [node name="CrowdRow1" parent="CrowdRows" node_paths=PackedStringArray("camera") instance=ExtResource("3_cl8m1")]
-scroll_scale = Vector2(0.65, 1)
+scroll_scale = Vector2(1, 1.538)
 scroll_offset = Vector2(0, 312)
 camera = NodePath("../../Camera2D")
 first_member_offset = 256.0
 num_crowd_members = 22
 
 [node name="BackRails" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.7, 1)
+scroll_scale = Vector2(0.99, 1)
 repeat_size = Vector2(1152, 0)
 
 [node name="StadiumBackRailings" type="Sprite2D" parent="BackRails"]
@@ -88,3 +88,4 @@ texture = ExtResource("5_m6dsr")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 323)
 position_smoothing_enabled = true
+position_smoothing_speed = 2.0
