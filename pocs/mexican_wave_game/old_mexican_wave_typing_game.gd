@@ -1,8 +1,8 @@
 extends Node2D
 
 
-@onready var player_crowd_line: CrowdLine = $PlayerCrowdLine
-@onready var enemy_crowd_line: CrowdLine = $EnemyCrowdLine
+@onready var player_crowd_line: OldCrowdLine = $PlayerCrowdLine
+@onready var enemy_crowd_line: OldCrowdLine = $EnemyCrowdLine
 
 var challenge_time:float = 5
 
