@@ -1,6 +1,10 @@
 extends Node2D
 
-const SPEED = 400
+const CAMERA_SPEED = 200
+
+@onready var camera: Camera2D = $Camera2D
+
+var moving:bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,8 +13,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	if Input.is_action_pressed("ui_right"):
-		$Camera2D.position += Vector2(1,0)*delta*SPEED
-	if Input.is_action_pressed("ui_left"):
-		$Camera2D.position += Vector2(-1,0)*delta*SPEED
+	if moving:
+		camera.position += Vector2(1,0)*delta*CAMERA_SPEED
