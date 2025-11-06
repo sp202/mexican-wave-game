@@ -41,8 +41,8 @@ func stand_up():
 	var tween = create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, sitting_pos_y + STANDING_DIFF), 0.15)
 	
-	if camera.global_position.x < global_position.x:
-		camera.global_position.x = global_position.x
+	#if camera.global_position.x < global_position.x:
+		#camera.global_position.x = global_position.x
 	
 	standup_timer.start()
 
