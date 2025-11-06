@@ -1,0 +1,202 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbsfelqtvbj2"]
+
+[ext_resource type="Script" uid="uid://b8o57ocny684l" path="res://scenes/endless_runner/endless_runner_screen_view.gd" id="1_cdxfl"]
+[ext_resource type="Texture2D" uid="uid://denuexkmv7lvw" path="res://assets/StadiumBackWall.png" id="2_yfp3g"]
+[ext_resource type="Texture2D" uid="uid://jg8h5gp7b2h7" path="res://assets/StadiumBackRailings.png" id="3_6cmjg"]
+[ext_resource type="Texture2D" uid="uid://yb6wwp4i6kd7" path="res://assets/StadiumLowerWall.png" id="4_ixoc1"]
+[ext_resource type="Texture2D" uid="uid://bhubk7qgbpjcc" path="res://assets/StadiumFrontRailings.png" id="5_lnw58"]
+[ext_resource type="Texture2D" uid="uid://24p8rwbj4rif" path="res://assets/StadiumPitch.png" id="6_2xeil"]
+[ext_resource type="PackedScene" uid="uid://b4jfm050tml0n" path="res://scenes/endless_runner/endless_runner_row.tscn" id="7_lt3xr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yfp3g"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_6cmjg"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_ixoc1"]
+font_size = 64
+
+[node name="EndlessRunnerScreenView" type="Node2D"]
+script = ExtResource("1_cdxfl")
+
+[node name="ScrollingBackground" type="Node2D" parent="."]
+
+[node name="Background" type="Parallax2D" parent="ScrollingBackground"]
+scroll_scale = Vector2(1.25, 1)
+repeat_size = Vector2(1152, 0)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollingBackground/Background"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.4117647, 0.41568628, 0.41568628, 1)
+
+[node name="BackWall" type="Parallax2D" parent="ScrollingBackground"]
+scroll_scale = Vector2(0.85, 1)
+repeat_size = Vector2(1152, 0)
+
+[node name="StadiumBackWall" type="Sprite2D" parent="ScrollingBackground/BackWall"]
+position = Vector2(1152, 324)
+texture = ExtResource("2_yfp3g")
+
+[node name="BackRails" type="Parallax2D" parent="ScrollingBackground"]
+visible = false
+scroll_scale = Vector2(0.95, 1)
+repeat_size = Vector2(1152, 0)
+
+[node name="StadiumBackRailings" type="Sprite2D" parent="ScrollingBackground/BackRails"]
+position = Vector2(1152, 324)
+texture = ExtResource("3_6cmjg")
+
+[node name="LowerWall" type="Parallax2D" parent="ScrollingBackground"]
+scroll_scale = Vector2(1.05, 1)
+repeat_size = Vector2(1152, 0)
+
+[node name="StadiumLowerWall" type="Sprite2D" parent="ScrollingBackground/LowerWall"]
+position = Vector2(1152, 324)
+texture = ExtResource("4_ixoc1")
+
+[node name="LowerRails" type="Parallax2D" parent="ScrollingBackground"]
+scroll_scale = Vector2(1.05, 1)
+repeat_size = Vector2(1152, 0)
+
+[node name="StadiumFrontRailings" type="Sprite2D" parent="ScrollingBackground/LowerRails"]
+position = Vector2(1152, 324)
+texture = ExtResource("5_lnw58")
+
+[node name="Pitch" type="Parallax2D" parent="ScrollingBackground"]
+scroll_scale = Vector2(1.15, 1)
+repeat_size = Vector2(1152, 0)
+
+[node name="StadiumPitch" type="Sprite2D" parent="ScrollingBackground/Pitch"]
+position = Vector2(1152, 324)
+texture = ExtResource("6_2xeil")
+
+[node name="BackgroundRows" type="Node2D" parent="."]
+
+[node name="CrowdRow9" parent="BackgroundRows" instance=ExtResource("7_lt3xr")]
+scroll_scale = Vector2(1, 1.538)
+scroll_offset = Vector2(0, 56)
+first_member_offset = 256.0
+num_crowd_members = 22
+
+[node name="CrowdRow8" parent="BackgroundRows" instance=ExtResource("7_lt3xr")]
+scroll_scale = Vector2(1, 1.538)
+scroll_offset = Vector2(0, 88)
+first_member_offset = 284.0
+num_crowd_members = 22
+
+[node name="CrowdRow7" parent="BackgroundRows" instance=ExtResource("7_lt3xr")]
+scroll_scale = Vector2(1, 1.538)
+scroll_offset = Vector2(0, 120)
+first_member_offset = 256.0
+num_crowd_members = 22
+
+[node name="CrowdRow6" parent="BackgroundRows" instance=ExtResource("7_lt3xr")]
+scroll_scale = Vector2(1, 1.538)
+scroll_offset = Vector2(0, 152)
+first_member_offset = 284.0
+num_crowd_members = 22
+
+[node name="CrowdRow5" parent="BackgroundRows" instance=ExtResource("7_lt3xr")]
+scroll_scale = Vector2(1, 1.538)
+scroll_offset = Vector2(0, 184)
+first_member_offset = 256.0
+num_crowd_members = 22
+
+[node name="LetterRow" parent="." instance=ExtResource("7_lt3xr")]
+scroll_offset = Vector2(0, 216)
+first_member_offset = 284.0
+num_crowd_members = 22
+
+[node name="ForegroundRows" type="Node2D" parent="."]
+
+[node name="CrowdRow3" parent="ForegroundRows" instance=ExtResource("7_lt3xr")]
+scroll_scale = Vector2(1, 1.538)
+scroll_offset = Vector2(0, 248)
+first_member_offset = 256.0
+num_crowd_members = 22
+
+[node name="CrowdRow2" parent="ForegroundRows" instance=ExtResource("7_lt3xr")]
+scroll_scale = Vector2(1, 1.538)
+scroll_offset = Vector2(0, 280)
+first_member_offset = 284.0
+num_crowd_members = 22
+
+[node name="CrowdRow1" parent="ForegroundRows" instance=ExtResource("7_lt3xr")]
+scroll_scale = Vector2(1, 1.538)
+scroll_offset = Vector2(0, 312)
+first_member_offset = 256.0
+num_crowd_members = 22
+
+[node name="ScrollingForeground" type="Node2D" parent="."]
+
+[node name="BackRails" type="Parallax2D" parent="ScrollingForeground"]
+scroll_scale = Vector2(0.99, 1)
+repeat_size = Vector2(1152, 0)
+
+[node name="StadiumBackRailings" type="Sprite2D" parent="ScrollingForeground/BackRails"]
+position = Vector2(1152, 324)
+texture = ExtResource("3_6cmjg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 323)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="EndScreen" type="ColorRect" parent="Camera2D"]
+offset_left = -312.0
+offset_top = -195.0
+offset_right = 304.0
+offset_bottom = 181.0
+color = Color(0, 1, 1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Camera2D/EndScreen"]
+layout_mode = 0
+offset_right = 616.0
+offset_bottom = 376.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/EndScreen/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Camera2D/EndScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_yfp3g")
+
+[node name="RetryButton" type="Button" parent="Camera2D/EndScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Retry"
+
+[node name="Ready" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "READY...."
+label_settings = SubResource("LabelSettings_6cmjg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GO" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "GO!"
+label_settings = SubResource("LabelSettings_ixoc1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlinkTimer" type="Timer" parent="GO"]
+wait_time = 0.5
+
+[connection signal="person_exited_screen" from="BackgroundRows/CrowdRow9" to="." method="_on_row_person_exited_screen"]
+[connection signal="person_exited_screen" from="BackgroundRows/CrowdRow8" to="." method="_on_row_person_exited_screen"]
+[connection signal="person_exited_screen" from="BackgroundRows/CrowdRow7" to="." method="_on_row_person_exited_screen"]
+[connection signal="person_exited_screen" from="BackgroundRows/CrowdRow6" to="." method="_on_row_person_exited_screen"]
+[connection signal="person_exited_screen" from="BackgroundRows/CrowdRow5" to="." method="_on_row_person_exited_screen"]
+[connection signal="new_person_spawned" from="LetterRow" to="." method="_on_letter_row_new_person_spawned"]
+[connection signal="person_exited_screen" from="LetterRow" to="." method="_on_letter_row_person_exited_screen"]
+[connection signal="person_exited_screen" from="ForegroundRows/CrowdRow3" to="." method="_on_row_person_exited_screen"]
+[connection signal="person_exited_screen" from="ForegroundRows/CrowdRow2" to="." method="_on_row_person_exited_screen"]
+[connection signal="person_exited_screen" from="ForegroundRows/CrowdRow1" to="." method="_on_row_person_exited_screen"]
+[connection signal="pressed" from="Camera2D/EndScreen/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="timeout" from="GO/BlinkTimer" to="." method="_on_blink_timer_timeout"]

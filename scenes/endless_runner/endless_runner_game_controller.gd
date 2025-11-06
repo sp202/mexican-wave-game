@@ -1,24 +1,7 @@
-extends Node2D
+class_name EndlessRunnerGameController extends Node2D # TODO: Should this extend an "interface"?
 
 @export var sample_letter_queue:String = ""
 
-const STARTING_CAMERA_SPEED:float = 200
-const CAMERA_ACCELERATION:float = 5
-var camera_speed:float = STARTING_CAMERA_SPEED
-
-@onready var camera: Camera2D = $Camera2D
-@onready var typing_row: TypableCrowdRow = $CrowdRows/TypingRow
-@onready var non_typing_rows: Array[CrowdRow] = [
-	$CrowdRows/CrowdRow9,
-	$CrowdRows/CrowdRow8, 
-	$CrowdRows/CrowdRow7, 
-	$CrowdRows/CrowdRow6, 
-	$CrowdRows/CrowdRow5,
-	$CrowdRows/CrowdRow3, 
-	$CrowdRows/CrowdRow2, 
-	$CrowdRows/CrowdRow1
-]
-@onready var end_screen: ColorRect = $Camera2D/EndScreen
 
 enum State {
 	READY,
@@ -26,6 +9,8 @@ enum State {
 	OVER,
 }
 var state:State
+
+@onready var screen_view: EndlessRunnerScreenView = $ScreenView
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,34 +20,24 @@ func reset(reuse_existing_crowd:bool = false) -> void:
 	
 	# Reset the state
 	state = State.READY
-	camera_speed = STARTING_CAMERA_SPEED
-	typing_row.reset_with_new_letter_queue(sample_letter_queue, reuse_existing_crowd)
 	
 	# Reset the visuals
-	$Ready.show()
-	$GO.hide()
-	end_screen.hide()
+	screen_view.reset(sample_letter_queue, reuse_existing_crowd)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if state == State.PLAYING:
-		
-		# Increase camera speed according to the acceslleration
-		# TODO: Should we have a maximum speed?
-		camera_speed += delta*CAMERA_ACCELERATION
-		camera.position += Vector2(1,0)*delta*camera_speed
+		screen_view.move_camera(delta)
 
 func start():
 	if state != State.READY:
 		return
 	
-	# Update the visuals to play mode
-	$Ready.hide()
-	$GO.show()
-	$GO/BlinkTimer.start()
-	
-	# Start the game
+	# Update the state
 	state = State.PLAYING
+	
+	# Update the visuals
+	screen_view.start()
 
 func _process_key_input_event(event: InputEventKey) -> void:
 	if state != State.READY && state != State.PLAYING:
@@ -72,23 +47,21 @@ func _process_key_input_event(event: InputEventKey) -> void:
 	var letter_input:String = PackedByteArray([event.unicode]).get_string_from_utf8()
 	
 	# Determine if it's the correct input
-	var stood_up_crowd_member:CrowdMember = typing_row.receive_typed_input(letter_input)
-	if stood_up_crowd_member:
-		_process_correct_letter(stood_up_crowd_member)
+	if letter_input == screen_view.get_next_letter():
+		_process_correct_letter()
 	#else:
 		#process_incorrect_letter(letter_input)
 
-func _process_correct_letter(stood_up_crowd_member:CrowdMember):
+func _process_correct_letter():
 	if state != State.READY && state != State.PLAYING:
 		return
 	
-	# If this is the first correctinput, start the game
+	# If this is the first correct input, start the game
 	if state == State.READY:
 		start()
 	
-	# Stand up all the CrowdMembers in-line with the stood-up CrowdMember
-	for crowd_row in non_typing_rows:
-		crowd_row.stand_up_at_global_pos_x(stood_up_crowd_member.position.x)
+	# Update the visuals
+	screen_view.stand_up_next_person_column()
 
 func _process_loss():
 	if state != State.PLAYING:
@@ -96,7 +69,7 @@ func _process_loss():
 	
 	state = State.OVER
 	await get_tree().create_timer(1).timeout
-	end_screen.show()
+	screen_view.show_end_popup()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if state != State.READY && state != State.PLAYING:
@@ -105,17 +78,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed() && event is InputEventKey:
 		_process_key_input_event(event)
 
-
-func _on_blink_timer_timeout() -> void:
-	$GO.hide()
-
-
-func _on_typing_row_loss() -> void:
+func _on_screen_view_loss() -> void:
 	if state != State.PLAYING:
 		return
 	
 	_process_loss()
 
-
-func _on_retry_button_pressed() -> void:
+func _on_screen_view_retry() -> void:
 	reset(true)
