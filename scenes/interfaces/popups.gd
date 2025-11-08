@@ -1,4 +1,6 @@
-class_name Popups extends CanvasLayer
+@abstract
+class_name Popups
+extends CanvasLayer
 
 @export var _ready_screen: Control
 @export var _hud: Control

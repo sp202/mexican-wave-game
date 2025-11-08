@@ -1,5 +1,6 @@
 @abstract
-class_name GameController extends Node
+class_name GameController
+extends Node
 
 @export var _input_system: InputSystem # TODO: Should this be a global class?
 @export var _screen_view: ScreenView
@@ -107,11 +108,9 @@ func _on_screen_view_loss() -> void:
 	_process_game_over()
 
 ## Handles what happens when the game receives a letter input.
-func _process_letter_input(_letter_input:String):
-	print_debug("_process_letter_input() function is unimplemented")
-	pass
+@abstract
+func _process_letter_input(_letter_input:String)
 
 ## Handles the game's game-over sequence.
-func _process_game_over():
-	print_debug("_process_game_over() function is unimplemented")
-	pass
+@abstract
+func _process_game_over()
