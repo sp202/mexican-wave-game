@@ -5,12 +5,11 @@ class_name EndlessRunnerScreenView extends ScreenView
 @export var _starting_camera_speed:float = 200
 @export var _camera_acceleration:float = 5
 
-## If the wave gets to this many pixels to the right of the centre of the 
-## screen, we snap the camera to catch up.
+## If the wave gets to this percentage across the screen, we snap the camera to catch up.
 # TODO: Play around with this value
 # TODO: Remove this feature to simulate the user going REALLY fast, and insure 
 # the game doesn't completely break when the player gets past the screen.
-@export var _camera_snap_threshold:int = 384
+@export var _camera_snap_threshold_percentage:float = 0.6
 
 @onready var _crowd: Crowd = $Crowd
 
@@ -69,9 +68,9 @@ func advance_wave():
 	next_column.stand_up()
 	
 	# Snap the camera if required
-	if next_column.global_position.x - game_camera.global_position.x > _camera_snap_threshold:
+	if next_column.global_position.x - game_camera.global_position.x > _camera_snap_threshold():
 		var new_camera_global_pos := Vector2(
-			next_column.global_position.x - _camera_snap_threshold,
+			next_column.global_position.x - _camera_snap_threshold(),
 			game_camera.global_position.y
 		)
 		game_camera.snap_to(new_camera_global_pos)
@@ -86,6 +85,11 @@ func _pop_letter_from_queue() -> String:
 	var letter:String = _letter_queue[0]
 	_letter_queue = _letter_queue.substr(1)
 	return letter
+
+## Returns the Camera threshold as a number of pixels. If the wave gets that many pixels to the
+## right of the centre of the screen, we snap the camera to catch up.
+func _camera_snap_threshold() -> float:
+	return DisplayServer.screen_get_size().x * (_camera_snap_threshold_percentage - 0.5)
 
 ## Triggered when a new column is spawned in the crowd.
 func _on_crowd_new_column_spawned(column:CrowdColumn) -> void:
