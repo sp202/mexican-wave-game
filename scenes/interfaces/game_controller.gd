@@ -2,6 +2,8 @@
 class_name GameController
 extends Node
 
+const HIGH_SCORE_SAVE_SUFFIX := "_HighScore"
+
 @export var _input_system: InputSystem # TODO: Should this be a global class?
 @export var _screen_view: ScreenView
 @export var _popups: Popups
@@ -114,6 +116,21 @@ func _on_screen_view_existing_column_spawned(column_id:int) -> void:
 		return
 	_process_existing_column_despawned(column_id)
 
+func _get_high_score() -> int:
+	return SaveManager.get_value(_get_mode_name() + HIGH_SCORE_SAVE_SUFFIX, 0)
+	
+func _set_high_score() -> void:
+	if _get_score() > _get_high_score():
+		SaveManager.set_value(_get_mode_name() + HIGH_SCORE_SAVE_SUFFIX, _get_score())
+
+# Returns the current score, however the game is tracking it.
+@abstract
+func _get_score() -> int
+
+# Returns a string representing the mode ("endless runner", etc)
+@abstract
+func _get_mode_name() -> String
+	
 ## Handles what happens when a new column spawns.
 @abstract
 func _process_new_column_spawned(new_column_id:int) -> void

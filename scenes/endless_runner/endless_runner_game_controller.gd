@@ -92,7 +92,16 @@ func _process_game_over():
 	# Update the state
 	_state = State.GAMEOVER
 	
+	# Process score & high-score
+	_set_high_score()
+	
 	# Update the visuals
 	_screen_view.stop()
 	await get_tree().create_timer(1).timeout
-	_popups.show_game_over_menu(_restart, _text_manager.get_score())
+	_popups.show_game_over_menu(_restart, _get_score(), _get_high_score())
+	
+func _get_score() -> int:
+	return _text_manager.get_currently_selected_char_index()
+
+func _get_mode_name() -> String:
+	return "EndlessRunner"

@@ -27,14 +27,13 @@ func get_char(index:int) -> String:
 ## Returns the current character selection (based on _currently_selected_char_index)
 func get_currently_selected_char() -> String:
 	return get_char(_currently_selected_char_index)
+	
+func get_currently_selected_char_index() -> int:
+	return _currently_selected_char_index
 
 ## Advances the selected character index by one. 
 func advance_selected_char() -> void:
 	_currently_selected_char_index += 1
-
-# At the moment, score is equal to the amount of correctly typed characters, which equals the char index.
-func get_score() -> int:
-	return _currently_selected_char_index;
 	
 ## Uses the TextGenerator to generate new text.
 func _generate_new_text():

@@ -8,7 +8,7 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_7nx0y"]
 font_size = 32
 
-[node name="GameOverMenu" type="ColorRect" node_paths=PackedStringArray("_retry_button", "_score_text")]
+[node name="GameOverMenu" type="ColorRect" node_paths=PackedStringArray("_retry_button", "_score_text", "_high_score_text")]
 offset_left = 232.0
 offset_top = 128.0
 offset_right = 848.0
@@ -17,6 +17,7 @@ color = Color(0, 1, 1, 0.3647059)
 script = ExtResource("1_7nx0y")
 _retry_button = NodePath("CenterContainer/VBoxContainer/RetryButton")
 _score_text = NodePath("CenterContainer/VBoxContainer/ScoreLabel")
+_high_score_text = NodePath("CenterContainer/VBoxContainer/HighScoreLabel")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
@@ -40,5 +41,11 @@ text = "Retry"
 [node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Score: 69420"
+label_settings = SubResource("LabelSettings_7nx0y")
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Best: 69420"
 label_settings = SubResource("LabelSettings_7nx0y")
 horizontal_alignment = 1
