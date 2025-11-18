@@ -51,7 +51,7 @@ func _set_random_sprite():
 func give_letter(new_letter:String) -> void:
 	
 	# Check for the case where the letter is empty
-	if new_letter == "" || new_letter == " ":
+	if Utilities.is_empty(new_letter):
 		remove_sign()
 		return
 	

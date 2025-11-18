@@ -24,7 +24,7 @@ func generate_sentence():
 
 func generate_word():
 	var options
-	if current_word == "":
+	if Utilities.is_empty(current_word):
 		options = model.starters
 	else:
 		options = model.chains[current_word]
@@ -46,7 +46,7 @@ func _load_model():
 	
 	var sentences = content.split("\n")
 	for sentence in sentences:
-		if sentence == "":
+		if Utilities.is_empty(sentence):
 			continue
 		var words = sentence.split(" ")
 		for i in range(0, len(words)):
