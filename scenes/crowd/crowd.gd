@@ -62,6 +62,9 @@ func spawn_new_column() -> void:
 	if new_column.get_parent() != self:
 		add_child(new_column)
 		new_column.exited_screen.connect(_on_crowd_column_exited_screen)
+
+	# Reset the state of the column
+	new_column.reset()
 	
 	# Spawn the column to the right position
 	move_child(new_column, 0)

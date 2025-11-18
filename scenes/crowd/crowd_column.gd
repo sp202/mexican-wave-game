@@ -10,8 +10,8 @@ var active:bool # TODO: Make use of this variable outside of object-pooling?
 ## signs.
 func reset():
 	for person in _people:
-		person.remove_sign()
-		person.sit_down()
+		person.remove_sign(true) # Force immediate removal without animation
+		person.sit_down(true) # Force immediate sit down without animation
 
 ## Activates the CrowdColumn, reveals it, and moves it to the provided new
 ## position (used for object pooling).

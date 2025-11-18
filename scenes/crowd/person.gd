@@ -76,7 +76,7 @@ func highlight_sign() -> void:
 		held_sign.color = highlighted_sign_colour
 
 ## Removes the held sign from the Person.
-func remove_sign() -> void:
+func remove_sign(immediate:bool = false) -> void:
 	
 	# Update the state
 	has_sign = false
@@ -85,7 +85,7 @@ func remove_sign() -> void:
 	
 	# Update the visuals
 	held_sign.hide()
-	_play_hands_up_animation()
+	_play_hands_up_animation(immediate)
 
 ## Makes the person stand up temporarily (time is configurable via the StandupTimer).
 func stand_up():
@@ -101,17 +101,21 @@ func stand_up():
 	standup_timer.start()
 
 ## Makes the person sit down.
-func sit_down():
+func sit_down(immediate:bool = false):
 	
 	# Play the sit-down animation
-	_play_sit_down_animation()
+	_play_sit_down_animation(immediate)
 	
 	# Move the person back down
-	var tween = create_tween()
-	tween.tween_property(self, "position", Vector2(position.x, sitting_pos.y), 0.2)
+	if immediate:
+		position = Vector2(position.x, sitting_pos.y)
+	else:
+		# Move the person back down with a tween
+		var tween = create_tween()
+		tween.tween_property(self, "position", Vector2(position.x, sitting_pos.y), 0.2)
 	
-	await tween.finished
-	_play_hands_up_animation()
+		await tween.finished
+	_play_hands_up_animation(immediate)
 
 ## Makes the person become upset.
 func become_upset(delay:float = 0):
@@ -153,34 +157,40 @@ func unwaddle():
 
 ## Plays the animation for the person to sit down. This takes into consideration 
 ## whether or not the person has a sign.
-func _play_sit_down_animation(delay:float = 0):
+func _play_sit_down_animation(delay:float = 0, immediate:bool = false):
 	
-	# Add optional delay
-	if delay != 0:
+	# Add optional delay. Only works with non-immediate calls.
+	if delay != 0 and !immediate:
 		await get_tree().create_timer(delay).timeout
 	
 	# Play the sit-down animation (unless the person is holding a sign)
 	if !has_sign:
 		sprite.play("sit_down")
 
+	if immediate:
+		sprite.frame = -1 # Force to the last frame of the animation	
+
 ## Plays the animation for the person to stand up. This takes into consideration 
 ## whether or not the person has a sign.
-func _play_stand_up_animation(delay:float = 0):
+func _play_stand_up_animation(delay:float = 0, immediate:bool = false):
 	
-	# Add optional delay
-	if delay != 0:
+	# Add optional delay. Only works with non-immediate calls.
+	if delay != 0 and !immediate:
 		await get_tree().create_timer(delay).timeout
 	
 	# Play the stand-up animation (unless the person is holding a sign)
 	if !has_sign:
 		sprite.play("stand_up")
 
+	if immediate:
+		sprite.frame = -1 # Force to the last frame of the animation	
+
 ## Plays the animation for the person to hold their hands up. This takes into
 ## consideration whether or not the person has a sign.
-func _play_hands_up_animation(delay:float = 0):
+func _play_hands_up_animation(delay:float = 0, immediate:bool = false):
 	
-	# Add optional delay
-	if delay != 0:
+	# Add optional delay. Only works with non-immediate calls.
+	if delay != 0 and !immediate:
 		await get_tree().create_timer(delay).timeout
 	
 	# Play the hands-up animation
@@ -188,6 +198,9 @@ func _play_hands_up_animation(delay:float = 0):
 		sprite.play("hands_up_holding_sign")
 	else:
 		sprite.play("hands_up_not_holding_sign")
+	
+	if immediate:
+		sprite.frame = -1 # Force to the last frame of the animation
 
 ## Plays the animation for the person to become disappointed. This takes into
 ## consideration whether or not the person has a sign.
