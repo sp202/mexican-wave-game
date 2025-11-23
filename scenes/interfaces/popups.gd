@@ -5,6 +5,7 @@ extends CanvasLayer
 @export var _ready_screen: Control
 @export var _hud: Control
 @export var game_over_menu: GameOverMenu
+@export var _popups: Array[Node] = []
 
 ## Resets the popups to the start-of-game state
 func reset():
@@ -13,9 +14,9 @@ func reset():
 
 ## Hides all the popups.
 func _hide_all():
-	for child in get_children():
-		if child is Control:
-			child.hide()
+	for popup in _popups:
+		if popup is Control:
+			popup.hide()
 			
 func _setup_all():
 	game_over_menu.init(_hide_all)

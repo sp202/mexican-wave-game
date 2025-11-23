@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ogocgp6mobke"]
+[gd_scene load_steps=5 format=3 uid="uid://ogocgp6mobke"]
 
 [ext_resource type="Script" uid="uid://cubpfrr44642v" path="res://scenes/endless_runner/endless_runner_popups.gd" id="1_sqbng"]
 [ext_resource type="PackedScene" uid="uid://cv0pcnqkje6xm" path="res://scenes/ui/game_over_menu.tscn" id="2_yywdt"]
+[ext_resource type="Texture2D" uid="uid://dyf2d1n5oomhy" path="res://assets/art/ui/PauseButton.png" id="3_qnl08"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sqbng"]
 font_size = 64
 
-[node name="EndlessRunnerPopups" type="CanvasLayer" node_paths=PackedStringArray("_go_screen", "_go_screen_hide_timer", "_ready_screen", "_hud", "game_over_menu")]
+[node name="EndlessRunnerPopups" type="CanvasLayer" node_paths=PackedStringArray("_go_screen", "_go_screen_hide_timer", "_ready_screen", "_hud", "game_over_menu", "_popups")]
 script = ExtResource("1_sqbng")
 _go_screen = NodePath("GoScreen")
 _go_screen_hide_timer = NodePath("GoScreen/HideTimer")
 _ready_screen = NodePath("ReadyScreen")
 _hud = NodePath("HUD")
 game_over_menu = NodePath("GameOverMenu")
+_popups = [NodePath("ReadyScreen"), NodePath("GoScreen"), NodePath("GameOverMenu"), NodePath("GameOverMenu")]
 
 [node name="ReadyScreen" type="ColorRect" parent="."]
 offset_left = 232.0
@@ -64,6 +66,18 @@ offset_bottom = 648.0
 label_settings = SubResource("LabelSettings_sqbng")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_right = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_qnl08")
 
 [node name="GameOverMenu" parent="." instance=ExtResource("2_yywdt")]
 
