@@ -31,7 +31,7 @@ func _reset() -> void:
 	super._reset()
 	_screen_view.fill_crowd_with_text(_screen_view.first_letter_column_index)
 
-func _restart() -> void:
+func restart() -> void:
 	
 	# Restart the data
 	_text_manager.reset()
@@ -40,7 +40,7 @@ func _restart() -> void:
 	# Restart the difficulty
 	_sleeping_person_spawn_chance = _starting_sleeping_person_spawn_chance
 	
-	super._restart()
+	super.restart()
 	_screen_view.fill_crowd_with_text(_screen_view.first_letter_column_index)
 
 func _wait_for_ready_components() -> void:
@@ -131,7 +131,7 @@ func _process_game_over():
 	# Update the visuals
 	_screen_view.stop()
 	await get_tree().create_timer(1).timeout
-	_popups.game_over_menu.open_popup(_restart, _get_score(), _get_high_score())
+	_popups.game_over_menu.open_popup(restart, _get_score(), _get_high_score())
 	
 func _get_score() -> int:
 	return _text_manager.get_currently_selected_char_index()

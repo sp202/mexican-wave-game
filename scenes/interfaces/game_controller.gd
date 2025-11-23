@@ -51,7 +51,7 @@ func _reset() -> void:
 
 ## Restarts the game, reusing any existing visuals (eg: reuses existing crowd 
 ## members)
-func _restart() -> void:
+func restart() -> void:
 	# Reset the state
 	_state = State.READY
 	
