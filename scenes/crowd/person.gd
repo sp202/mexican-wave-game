@@ -19,7 +19,10 @@ var sitting_pos:Vector2
 const STANDING_DIFF:float = -18
 
 var held_up_sign_pos:Vector2
-const SIGN_DOWN_DIFF:float = 32
+const SIGN_DOWN_COMPLETELY_DIFF:float = 32
+
+const SIGN_DOWN_PARTIAL_DIFF:float = 4
+const SIGN_DOWN_PARTIAL_SCALE:float = 0.25
 
 var asleep:bool = false
 var waddling:bool = false # TODO: Maybe the Person needs a State?
@@ -129,7 +132,7 @@ func go_to_sleep() -> void:
 	asleep = true
 	
 	# Update the visuals
-	_snap_sign_down()
+	_snap_sign_partially_down()
 	_play_idle_animation()
 
 ## Makes the person wake up.
@@ -189,26 +192,28 @@ func _snap_sign_up() -> void:
 	held_sign.scale = Vector2(1,1)
 	move_child(held_sign, 0)
 
-## Snaps the sign to the down-position without playing the folding animation.
-func _snap_sign_down() -> void:
-	held_sign.move_to_front()
-	held_sign.position = held_up_sign_pos + Vector2(0, SIGN_DOWN_DIFF)
-	held_sign.scale = Vector2(1,0)
-
 ## Folds the sign to the up-position with the folding animation.
 func _fold_sign_up() -> void:
 	var tween = create_tween()
 	held_sign.move_to_front()
+	held_sign_label.show()
 	tween.parallel().tween_property(held_sign, "position", held_up_sign_pos, 0.2)
 	tween.parallel().tween_property(held_sign, "scale", Vector2(1,1), 0.2)
 	move_child(held_sign, 0)
 
-## Folds the sign to the down-position with the folding animation.
-func _fold_sign_down() -> void:
+## Snaps the sign to the partially-down-position without playing the folding animation.
+func _snap_sign_partially_down() -> void:
+	held_sign.move_to_front()
+	held_sign.position = held_up_sign_pos + Vector2(0, SIGN_DOWN_PARTIAL_DIFF)
+	held_sign.scale = Vector2(1, SIGN_DOWN_PARTIAL_SCALE)
+	held_sign_label.hide()
+
+## Folds the sign to the completely-down-position with the folding animation.
+func _fold_sign_completely_down() -> void:
 	held_sign.move_to_front()
 	var tween = create_tween()
 	held_sign.move_to_front()
-	tween.parallel().tween_property(held_sign, "position", held_up_sign_pos + Vector2(0, SIGN_DOWN_DIFF), 0.2)
+	tween.parallel().tween_property(held_sign, "position", held_up_sign_pos + Vector2(0, SIGN_DOWN_COMPLETELY_DIFF), 0.2)
 	tween.parallel().tween_property(held_sign, "scale", Vector2(1,0), 0.2)
 
 ## Fades the sign with the fade colour.
@@ -285,7 +290,7 @@ func _play_dissapointment_animation(delay:float = 0):
 	# Play the disappointment animation
 	sprite.play("disappointment")
 	if has_sign:
-		_fold_sign_down()
+		_fold_sign_completely_down()
 
 ## Plays the wake-up animation for the person.
 func _play_wake_up_animation(delay:float = 0):
