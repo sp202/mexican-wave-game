@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnmf4ghisg08r"]
+
+[ext_resource type="Script" uid="uid://d2afwydxtilko" path="res://scenes/ui/pause_menu.gd" id="1_8fwbo"]
+[ext_resource type="SpriteFrames" uid="uid://dh4oh6j2fq7ud" path="res://assets/art/ui/PauseMenuBackAnim/pause_menu_background.tres" id="2_4inpj"]
+[ext_resource type="Texture2D" uid="uid://bm7nsb0noeog2" path="res://assets/art/ui/PauseMenuButtons/SoundOff02.png" id="3_2rlsb"]
+[ext_resource type="Texture2D" uid="uid://86x4rf7hx8yj" path="res://assets/art/ui/PauseMenuButtons/SoundOn.png" id="3_8fwbo"]
+[ext_resource type="Texture2D" uid="uid://81yxlnpsjl8c" path="res://assets/art/ui/PauseMenuButtons/ReturnToMainMenu.png" id="4_2rlsb"]
+[ext_resource type="Texture2D" uid="uid://bdgetvj52w7ln" path="res://assets/art/ui/PauseMenuButtons/Replay.png" id="5_coo1x"]
+[ext_resource type="Texture2D" uid="uid://busnfxltjmm7q" path="res://assets/art/ui/SettingAnim/Sprite-Settings6.png" id="6_2jkta"]
+
+[node name="PauseMenu" type="ColorRect" node_paths=PackedStringArray("_retry_button", "_home_button", "_toggle_audio_button")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.99976
+offset_top = -188.0
+offset_right = 307.99976
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_8fwbo")
+_retry_button = NodePath("VBoxContainer/HBoxContainer2/RestartButton")
+_home_button = NodePath("VBoxContainer/HBoxContainer2/QuitButton")
+_toggle_audio_button = NodePath("VBoxContainer/HBoxContainer/AudioButton")
+_audio_on_icon = ExtResource("3_8fwbo")
+_audio_off_icon = ExtResource("3_2rlsb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(309.99976, 185)
+scale = Vector2(7.1225, 3.7424877)
+sprite_frames = ExtResource("2_4inpj")
+frame_progress = 0.85395116
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -42.0
+offset_right = 118.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AudioButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Audio On"
+icon = ExtResource("3_8fwbo")
+icon_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Main Menu"
+icon = ExtResource("4_2rlsb")
+
+[node name="RestartButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Restart"
+icon = ExtResource("5_coo1x")
+
+[node name="Header" type="Sprite2D" parent="."]
+position = Vector2(287.99976, -15.669998)
+texture = ExtResource("6_2jkta")
