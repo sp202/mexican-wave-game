@@ -26,6 +26,14 @@ _main_menu_button = NodePath("CenterContainer/VBoxContainer/HBoxContainer2/QuitB
 _score_text = NodePath("CenterContainer/VBoxContainer/ScoreLabel")
 _high_score_text = NodePath("CenterContainer/VBoxContainer/HighScoreLabel")
 
+[node name="DarkenColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+color = Color(0, 0, 0, 0.39215687)
+
 [node name="BackgroundRect" type="NinePatchRect" parent="."]
 modulate = Color(0.91228896, 0.9122889, 0.91228884, 1)
 layout_mode = 1
