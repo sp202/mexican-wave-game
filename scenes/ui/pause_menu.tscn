@@ -32,6 +32,7 @@ _audio_off_icon = ExtResource("3_2rlsb")
 _close_button = NodePath("ClosePopupButton")
 
 [node name="BackgroundRect" type="NinePatchRect" parent="."]
+modulate = Color(0.9428228, 0.94282264, 0.94282264, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
