@@ -10,12 +10,12 @@ class_name PauseMenu extends GamePopup
 @export var _close_button:Button
 
 var _game_controller:GameController
-var _sound_is_on:bool = true
 
 # Opens the popup, connecting up the provided button functionality.
 func open_popup(game_controller:GameController = null):
 	_game_controller = game_controller
 	_setup_buttons()
+	_update_toggle_icons()
 	show()
 
 func _setup_buttons():
@@ -29,9 +29,11 @@ func _setup_buttons():
 		_close_button.pressed.connect(_close_button_clicked)
 
 func _toggle_audio_button_clicked():
-	# There is no sound in the game so this does nothing. For now we'll just change the icon.
-	_sound_is_on = !_sound_is_on
-	if (_sound_is_on):
+	Settings.audio_enabled = !Settings.audio_enabled
+	_update_toggle_icons()
+
+func _update_toggle_icons():
+	if (Settings.audio_enabled):
 		_toggle_audio_button.icon = _audio_on_icon
 	else:
 		_toggle_audio_button.icon = _audio_off_icon
