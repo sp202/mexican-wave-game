@@ -84,9 +84,15 @@ func _process_letter_input(letter_input:String):
 		return
 	
 	# Determine if it's the correct input
-	if letter_input != _text_manager.get_currently_selected_char():
-		# TODO: Handle the incorrect input here
-		return
+	var charToMatch = _text_manager.get_currently_selected_char()
+	if Settings.case_sensitive_gameplay_enabled:
+		if letter_input != charToMatch:
+			# TODO: Handle the incorrect input here
+			return
+	else:
+		if letter_input.to_lower() != charToMatch.to_lower():
+			# TODO: Handle the incorrect input here as well
+			return
 	
 	# Handle the state
 	match _state:
