@@ -2,10 +2,6 @@ class_name PauseMenu extends GamePopup
 
 @export var _retry_button:Button
 @export var _home_button:Button
-@export var _toggle_audio_button:Button
-
-@export var _audio_on_icon:Texture2D
-@export var _audio_off_icon:Texture2D
 
 @export var _close_button:Button
 
@@ -15,28 +11,15 @@ var _game_controller:GameController
 func open_popup(game_controller:GameController = null):
 	_game_controller = game_controller
 	_setup_buttons()
-	_update_toggle_icons()
 	show()
 
 func _setup_buttons():
-	if  _toggle_audio_button != null and !_toggle_audio_button.pressed.is_connected(_toggle_audio_button_clicked):
-		_toggle_audio_button.pressed.connect(_toggle_audio_button_clicked)
 	if _retry_button != null and !_retry_button.pressed.is_connected(_restart_button_clicked):
 		_retry_button.pressed.connect(_restart_button_clicked)
 	if _home_button != null and !_home_button.pressed.is_connected(_quit_button_clicked):
 		_home_button.pressed.connect(_quit_button_clicked)
 	if _close_button != null and !_close_button.pressed.is_connected(_close_button_clicked):
 		_close_button.pressed.connect(_close_button_clicked)
-
-func _toggle_audio_button_clicked():
-	Settings.audio_enabled = !Settings.audio_enabled
-	_update_toggle_icons()
-
-func _update_toggle_icons():
-	if (Settings.audio_enabled):
-		_toggle_audio_button.icon = _audio_on_icon
-	else:
-		_toggle_audio_button.icon = _audio_off_icon
 
 func _quit_button_clicked():
 	_game_controller.quit()
