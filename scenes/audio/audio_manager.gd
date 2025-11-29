@@ -7,6 +7,14 @@ extends Node
 
 var _audio_players: Array[AudioStreamPlayer] = []
 
+func _ready() -> void:
+	if !Settings.on_settings_updated.is_connected(_toggle_mute):
+		Settings.on_settings_updated.connect(_toggle_mute)
+	_toggle_mute()
+
+func _toggle_mute():
+	AudioServer.set_bus_mute(0, !Settings.audio_enabled)
+
 func stop_all_audio():
 	for i in range(_audio_players.size()):
 		_audio_players[i].stop()

@@ -3,6 +3,7 @@ extends Node
 const KEY_AUDIO_ENABLED := "audioEnabled"
 const KEY_CASE_SENSITIVE_GAMEPLAY := "caseSensitiveGameplay"
 
+signal on_settings_updated()
 
 var _audio_enabled:bool = true
 var _case_sensitive_gameplay_enabled:bool = true
@@ -22,6 +23,7 @@ var audio_enabled: bool:
 		if value != _audio_enabled:
 			SaveManager.set_value(KEY_AUDIO_ENABLED, value)
 			_audio_enabled = value
+			on_settings_updated.emit()
 
 var case_sensitive_gameplay_enabled: bool:
 	get:
@@ -30,3 +32,4 @@ var case_sensitive_gameplay_enabled: bool:
 		if value != _case_sensitive_gameplay_enabled:
 			SaveManager.set_value(KEY_CASE_SENSITIVE_GAMEPLAY, value)
 			_case_sensitive_gameplay_enabled = value
+			on_settings_updated.emit()
