@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://5sj7yhcl7bgn"]
 
 [ext_resource type="Script" uid="uid://7hucf76x5yp6" path="res://scenes/ui/tutorial_popup.gd" id="1_uek7y"]
-[ext_resource type="Texture2D" uid="uid://rej5gwy0fxir" path="res://assets/art/ui/PauseMenuBackAnim/pause_menu_background_animated_texture.tres" id="2_h30ef"]
+[ext_resource type="Texture2D" uid="uid://rej5gwy0fxir" path="res://assets/art/ui/PopupBackground/pause_menu_background_animated_texture.tres" id="2_h30ef"]
 [ext_resource type="PackedScene" uid="uid://d0qg5byt1cjmw" path="res://scenes/ui/person_ui.tscn" id="3_twff1"]
 [ext_resource type="FontFile" uid="uid://b08gfrml13o4i" path="res://assets/fonts/Tomorrow_Night.ttf" id="4_sjqu8"]
 [ext_resource type="Texture2D" uid="uid://b6c1x0tqb2smy" path="res://scenes/ui/settings_button_animated_texture.tres" id="5_67vh5"]
-[ext_resource type="Texture2D" uid="uid://dcq0fnknm0rwg" path="res://assets/art/ui/PauseMenuButtons/X.png" id="6_36hg5"]
+[ext_resource type="Texture2D" uid="uid://dcq0fnknm0rwg" path="res://assets/art/ui/Icons/X.png" id="6_36hg5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yc10j"]
 font = ExtResource("4_sjqu8")

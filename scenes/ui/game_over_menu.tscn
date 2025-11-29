@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://cv0pcnqkje6xm"]
 
 [ext_resource type="Script" uid="uid://3ugbv7d5ldc" path="res://scenes/ui/game_over_menu.gd" id="1_7nx0y"]
-[ext_resource type="Texture2D" uid="uid://rej5gwy0fxir" path="res://assets/art/ui/PauseMenuBackAnim/pause_menu_background_animated_texture.tres" id="2_i4hgn"]
-[ext_resource type="Texture2D" uid="uid://b8elscsrtwq76" path="res://assets/art/ui/SettingAnim/Sprite-Settings1.png" id="3_5d0qp"]
-[ext_resource type="Texture2D" uid="uid://81yxlnpsjl8c" path="res://assets/art/ui/PauseMenuButtons/ReturnToMainMenu.png" id="4_bajbn"]
+[ext_resource type="Texture2D" uid="uid://rej5gwy0fxir" path="res://assets/art/ui/PopupBackground/pause_menu_background_animated_texture.tres" id="2_i4hgn"]
+[ext_resource type="Texture2D" uid="uid://b8elscsrtwq76" path="res://assets/art/ui/Button_Settings/Sprite-Settings1.png" id="3_5d0qp"]
+[ext_resource type="Texture2D" uid="uid://81yxlnpsjl8c" path="res://assets/art/ui/Icons/ReturnToMainMenu.png" id="4_bajbn"]
 [ext_resource type="FontFile" uid="uid://b08gfrml13o4i" path="res://assets/fonts/Tomorrow_Night.ttf" id="4_rvyv1"]
-[ext_resource type="Texture2D" uid="uid://bdgetvj52w7ln" path="res://assets/art/ui/PauseMenuButtons/Replay.png" id="5_dvuf8"]
+[ext_resource type="Texture2D" uid="uid://bdgetvj52w7ln" path="res://assets/art/ui/Icons/Replay.png" id="5_dvuf8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7nx0y"]
 font_size = 32

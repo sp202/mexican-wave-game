@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ogocgp6mobke"]
 
 [ext_resource type="Script" uid="uid://cubpfrr44642v" path="res://scenes/endless_runner/endless_runner_popups.gd" id="1_sqbng"]
-[ext_resource type="Texture2D" uid="uid://v2vmphtkgboe" path="res://assets/art/ui/PauseButtonClolorVariant.png" id="2_jgys4"]
+[ext_resource type="Texture2D" uid="uid://v2vmphtkgboe" path="res://assets/art/ui/PauseButtonIcon.png" id="2_jgys4"]
 [ext_resource type="PackedScene" uid="uid://cv0pcnqkje6xm" path="res://scenes/ui/game_over_menu.tscn" id="2_yywdt"]
 [ext_resource type="PackedScene" uid="uid://cnmf4ghisg08r" path="res://scenes/ui/pause_menu.tscn" id="4_jgys4"]
 

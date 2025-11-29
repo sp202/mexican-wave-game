@@ -1,0 +1,23 @@
+[gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://rej5gwy0fxir"]
+
+[ext_resource type="Texture2D" uid="uid://qiev3vhh3af5" path="res://assets/art/ui/PopupBackground/PauseMenuBack1.png" id="1_6hwhk"]
+[ext_resource type="Texture2D" uid="uid://ddw7bg88wixnw" path="res://assets/art/ui/PopupBackground/PauseMenuBack2.png" id="2_ocxpg"]
+[ext_resource type="Texture2D" uid="uid://cf8ygvjn2whdl" path="res://assets/art/ui/PopupBackground/PauseMenuBack3.png" id="3_l0bxm"]
+[ext_resource type="Texture2D" uid="uid://bij11r6xu3n1h" path="res://assets/art/ui/PopupBackground/PauseMenuBack4.png" id="4_jw10l"]
+[ext_resource type="Texture2D" uid="uid://djjebajdht7sp" path="res://assets/art/ui/PopupBackground/PauseMenuBack5.png" id="5_gtrww"]
+[ext_resource type="Texture2D" uid="uid://bksx8ea6pwn4c" path="res://assets/art/ui/PopupBackground/PauseMenuBack6.png" id="6_gbr3d"]
+
+[resource]
+frames = 6
+speed_scale = 4.0
+frame_0/texture = ExtResource("1_6hwhk")
+frame_1/texture = ExtResource("2_ocxpg")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_l0bxm")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_jw10l")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_gtrww")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_gbr3d")
+frame_5/duration = 1.0
