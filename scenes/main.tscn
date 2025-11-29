@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bklubkulutqyb"]
+[gd_scene load_steps=19 format=3 uid="uid://bklubkulutqyb"]
 
 [ext_resource type="Script" uid="uid://ddf65fgyd437n" path="res://scenes/main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://c078h7knc5syp" path="res://assets/art/stadium/StadiumBackground.png" id="3_o6xl0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bsivclqgcee2i" path="res://assets/art/ui/Button_HowToPlay/HowToPlayMenuButton3.png" id="14_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://sjx3paba3xxv" path="res://assets/art/ui/Button_HowToPlay/HowToPlayMenuButton4.png" id="15_vxglm"]
 [ext_resource type="Texture2D" uid="uid://dqhkyypmc6362" path="res://assets/art/ui/Button_HowToPlay/HowToPlayMenuButton5.png" id="16_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://b6fwghryb8gr6" path="res://scenes/ui/leaderboard_popup.tscn" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://5sj7yhcl7bgn" path="res://scenes/ui/tutorial_popup.tscn" id="17_muem4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yq6so"]
@@ -32,13 +33,15 @@ frame_3/duration = 1.0
 frame_4/texture = ExtResource("16_2f3dj")
 frame_4/duration = 1.0
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("_play_button", "_settings_button", "_tutorial_button", "_settings_popup", "_tutorial_popup")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("_play_button", "_settings_button", "_tutorial_button", "_leaderboard_button", "_settings_popup", "_tutorial_popup", "_leaderboard_popup")]
 script = ExtResource("1_ig7tw")
 _play_button = NodePath("Buttons/PlayButton")
 _settings_button = NodePath("Buttons/SettingsButton")
 _tutorial_button = NodePath("Buttons/TutorialButton")
+_leaderboard_button = NodePath("Buttons/LeaderboardButton")
 _settings_popup = NodePath("PauseMenu")
 _tutorial_popup = NodePath("TutorialPopup")
+_leaderboard_popup = NodePath("LeaderboardPopup")
 
 [node name="EndlessRunnerScreenView" type="Node2D" parent="."]
 
@@ -124,6 +127,11 @@ theme = ExtResource("4_jscy8")
 icon = SubResource("AnimatedTexture_chjal")
 flat = true
 icon_alignment = 1
+
+[node name="LeaderboardButton" type="Button" parent="Buttons"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Leaderboard"
 
 [node name="Credits" type="Node2D" parent="."]
 
@@ -295,6 +303,9 @@ offset_left = 920.0
 offset_top = 544.0
 offset_right = 1389.185
 offset_bottom = 723.955
+
+[node name="LeaderboardPopup" parent="." instance=ExtResource("16_jbj1t")]
+visible = false
 
 [connection signal="column_exited_screen" from="EndlessRunnerScreenView/Crowd" to="EndlessRunnerScreenView" method="_on_crowd_column_exited_screen"]
 [connection signal="new_column_spawned" from="EndlessRunnerScreenView/Crowd" to="EndlessRunnerScreenView" method="_on_crowd_new_column_spawned"]
