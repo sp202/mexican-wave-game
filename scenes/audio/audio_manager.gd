@@ -11,13 +11,19 @@ func stop_all_audio():
 	for i in range(_audio_players.size()):
 		_audio_players[i].stop()
 
-func play_audio(audio:AudioStreamWAV, volume:float=-1, resetToStart:bool = true):
+func play_audio(audio:AudioStreamWAV, volume:float=-1, reset_to_start:bool = true, fade_duration:float = 0.5):
 	var audioPlayer = _get_audio_player_for_audio(audio)
-	if resetToStart:
+	if reset_to_start:
 		audioPlayer.stop()
 		audioPlayer.play()
+	
 	if volume != -1:
-		audioPlayer.volume_linear = volume
+		# Tween to wanted value
+		if fade_duration > 0:
+			var tween = create_tween()
+			tween.tween_property(audioPlayer, "volume_linear",volume, fade_duration)
+		else:
+			audioPlayer.volume_linear = volume
 
 func stop_audio(audio:AudioStreamWAV):
 	var audioPlayer = _get_audio_player_for_audio(audio)

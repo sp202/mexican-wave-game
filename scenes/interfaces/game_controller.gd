@@ -54,7 +54,7 @@ func _reset() -> void:
 
 	# Play music. By triggering them both at the same time we can make sure they're synced.
 	AudioManager.play_audio(AudioManager.music_beats)
-	AudioManager.play_audio(AudioManager.music_tune, 0.0)
+	AudioManager.play_audio(AudioManager.music_tune, 0.0, true, 0)
 
 ## Restarts the game, reusing any existing visuals (eg: reuses existing crowd 
 ## members)
