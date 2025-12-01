@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bgnn0ubbsmhw1" path="res://assets/art/stadium/StadiumInFrontOfPeople.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://cle2v1bwo2g3k" path="res://assets/art/stadium/clouds/CloudSprite-3.png" id="5_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://jf051ov1rwtn" path="res://scenes/ui/start_button_animated_texture.tres" id="6_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://doxfnkwsv6oew" path="res://scenes/ui/game_title_animated_text.tres" id="7_jscy8"]
+[ext_resource type="Texture2D" path="res://scenes/ui/game_title_animated_text.tres" id="7_jscy8"]
 [ext_resource type="Texture2D" uid="uid://b6c1x0tqb2smy" path="res://scenes/ui/settings_button_animated_texture.tres" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://cnmf4ghisg08r" path="res://scenes/ui/pause_menu.tscn" id="8_tipki"]
 [ext_resource type="Texture2D" uid="uid://cjv2un42alb7m" path="res://assets/art/ui/Button_HowToPlay/HowToPlayMenuButton1.png" id="12_y6deb"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bsivclqgcee2i" path="res://assets/art/ui/Button_HowToPlay/HowToPlayMenuButton3.png" id="14_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://sjx3paba3xxv" path="res://assets/art/ui/Button_HowToPlay/HowToPlayMenuButton4.png" id="15_vxglm"]
 [ext_resource type="Texture2D" uid="uid://dqhkyypmc6362" path="res://assets/art/ui/Button_HowToPlay/HowToPlayMenuButton5.png" id="16_2f3dj"]
+[ext_resource type="PackedScene" path="res://scenes/ui/leaderboard_popup.tscn" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://5sj7yhcl7bgn" path="res://scenes/ui/tutorial_popup.tscn" id="17_muem4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yq6so"]
@@ -35,13 +36,15 @@ frame_3/duration = 1.0
 frame_4/texture = ExtResource("16_2f3dj")
 frame_4/duration = 1.0
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("_play_button", "_settings_button", "_tutorial_button", "_settings_popup", "_tutorial_popup")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("_play_button", "_settings_button", "_tutorial_button", "_leaderboard_button", "_settings_popup", "_tutorial_popup", "_leaderboard_popup")]
 script = ExtResource("1_ig7tw")
 _play_button = NodePath("Buttons/PlayButton")
 _settings_button = NodePath("Buttons/SettingsButton")
 _tutorial_button = NodePath("Buttons/TutorialButton")
+_leaderboard_button = NodePath("Buttons/LeaderboardButton")
 _settings_popup = NodePath("PauseMenu")
 _tutorial_popup = NodePath("TutorialPopup")
+_leaderboard_popup = NodePath("LeaderboardPopup")
 
 [node name="EndlessRunnerScreenView" type="Node2D" parent="."]
 
@@ -180,6 +183,11 @@ theme = ExtResource("4_jscy8")
 icon = SubResource("AnimatedTexture_chjal")
 flat = true
 icon_alignment = 1
+
+[node name="LeaderboardButton" type="Button" parent="Buttons"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Leaderboard"
 
 [node name="Credits" type="Node2D" parent="."]
 
@@ -351,6 +359,9 @@ offset_left = 920.0
 offset_top = 544.0
 offset_right = 1389.185
 offset_bottom = 723.955
+
+[node name="LeaderboardPopup" parent="." instance=ExtResource("16_jbj1t")]
+visible = false
 
 [connection signal="column_exited_screen" from="EndlessRunnerScreenView/Crowd" to="EndlessRunnerScreenView" method="_on_crowd_column_exited_screen"]
 [connection signal="new_column_spawned" from="EndlessRunnerScreenView/Crowd" to="EndlessRunnerScreenView" method="_on_crowd_new_column_spawned"]
