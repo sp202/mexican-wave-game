@@ -118,6 +118,7 @@ func accept_text_input(text:String) -> void:
 		LeaderboardsManager.set_player_name(text)
 		SaveManager.set_value("nameChosen", true)
 		_player_data.name = text
+		_navigate_to_leaderboard_page(_current_page_index)
 		_name_entry.set_text("")
 
 func _on_name_entry_text_submitted(new_text: String) -> void:
