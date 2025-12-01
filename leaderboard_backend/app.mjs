@@ -90,6 +90,7 @@ async function setName(userId, name) {
 
 async function postScore(userId, leaderboardId, score) {
   const scoresCol = mongoCollection(scoresDb, scoresCollection);
+  score = cleanScore(score);
   await scoresCol.updateOne({ userId, leaderboardId }, { $max: { score } }, { upsert: true });
 }
 
@@ -99,9 +100,10 @@ async function startRun(userId, leaderboardId) {
   await runsCol.updateOne({ userId, leaderboardId, endTime: {$exists: false} }, { $set: { startTime }}, { upsert: true });
 }
 
-async function endRun(userId, leaderboardId) {
+async function endRun(userId, leaderboardId, score, ip) {
   const runsCol = mongoCollection(scoresDb, runsCollection)
   const endTime = new Date();
+  score = cleanScore(score);
   await runsCol.updateOne({ userId, leaderboardId, startTime: { $exists: true }, endTime: { $exists: false } },
   [
     { $set: {
@@ -142,7 +144,7 @@ app.post('/test', async (req, res) => {
 app.post('/post_score', async (req, res) => {
   const data = req.body;
   const {userId, leaderboardId, score} = data;
-  await postScore(userId, leaderboardId, score, ip);
+  await postScore(userId, leaderboardId, score);
   res.send();
 })
 
