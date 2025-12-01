@@ -62,7 +62,7 @@ func _init_leaderboard():
 		entries[3].free()
 		entries[4].free()
 
-		var player_ind = leaderboard_data.find(func(entry): return entry.is_player) - 1
+		var player_ind = leaderboard_data.find_custom(func(entry): return entry.is_player)
 		_create_leaderboard_entry(leaderboard_data[player_ind - 1])
 		_create_leaderboard_entry(leaderboard_data[player_ind])
 
